@@ -1,0 +1,110 @@
+﻿@model TechVision.Models.UserViewModel
+
+@{
+    Layout = null; // 🔥 important for print clean layout
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Print User</title>
+
+    <style>
+                body {
+                    font-family: Arial, Helvetica, sans-serif;
+                    padding: 30px;
+                    background: #fff;
+                    color: #000;
+                }
+
+                .card {
+                    max-width: 600px;
+                    margin: auto;
+                    border: 1px solid #ccc;
+                    padding: 25px;
+                    border-radius: 10px;
+                }
+
+                h2 {
+                    text-align: center;
+                    margin-bottom: 25px;
+                }
+
+                .row {
+                    margin-bottom: 12px;
+                    font-size: 16px;
+                }
+
+                .label {
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 120px;
+                }
+
+                .value {
+                    display: inline-block;
+                }
+
+                .print-btn {
+                    margin-top: 25px;
+                    text-align: center;
+                }
+
+                button {
+                    padding: 10px 20px;
+                    background: #2c3e50;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    background: #1a252f;
+                }
+
+                /* 🖨️ PRINT STYLE */
+                @@media print {
+            .print-btn {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>User Details</h2>
+
+        <div class="row">
+            <span class="label">Name:</span>
+            <span class="value">@Model.Name</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Email:</span>
+            <span class="value">@Model.Email</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Address:</span>
+            <span class="value">@Model.Address</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Date of Birth:</span>
+            <span class="value">
+                @(Model.DOB.HasValue ? Model.DOB.Value.ToString("dd MMM yyyy") : "N/A")
+            </span>
+        </div>
+
+        <div class="print-btn">
+            <button onclick="window.print()">🖨️ Print</button>
+        </div>
+    </div>
+
+</body>
+</html>

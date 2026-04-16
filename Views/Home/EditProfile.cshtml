@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile | TechVision</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Segoe UI';
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .profile-pic img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 4px solid #4e73df;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #1cc88a;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background: #e74a3b;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2><i class="fa fa-user-pen"></i> Edit Profile</h2>
+
+        @if (TempData["Error"] != null)
+        {
+            <p style="color:red">@TempData["Error"]</p>
+        }
+
+        @using (Html.BeginForm("EditProfile", "Home", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+        {
+            <div class="profile-pic">
+                <img src="@Session["ProfilePhoto"]" />
+                <input type="file" name="ProfilePhoto" accept=".jpg,.jpeg,.png" />
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="Address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" name="DOB" />
+            </div>
+
+            <button type="submit">Save Changes</button>
+            <a href="@Url.Action("Dashboard","Home")">Cancel</a>
+        }
+
+    </div>
+
+</body>
+</html>

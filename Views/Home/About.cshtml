@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | TechVision IT Solutions</title>
+    <style>
+        :root {
+            --secondary: #20c997;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #666;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Navigation (Same as Index) */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            nav .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--secondary);
+                text-decoration: none;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                margin: 0;
+            }
+
+                nav ul li {
+                    margin-left: 20px;
+                }
+
+                    nav ul li a {
+                        color: white;
+                        text-decoration: none;
+                        font-weight: 500;
+                    }
+
+        .active {
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 2px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80");
+            background-size: cover;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+        /* Content Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 5%;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Mission/Values Section */
+        .values {
+            background: var(--light);
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.137);
+            text-align: center;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 12px rgb(0, 0, 0);
+                transform: translateY(-5px);
+                transition: all 0.3s ease;
+            }
+
+            .card h3 {
+                color: var(--primary);
+            }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 5%;
+            margin-top: 50px;
+        }
+
+            footer p {
+                margin: 5px 0;
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+        .login-btn {
+            background: #0056b3;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+            .login-btn:hover {
+                background: #004494;
+            }
+
+        .register-btn {
+            background: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+            .register-btn:hover {
+                background: #17a589;
+            }
+
+        .pages li a:hover {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TechVision</div>
+        <ul class="pages">
+            <li>@Html.ActionLink("Home", "Index")</li>
+            <li>@Html.ActionLink("Service", "Service")</li>
+            <li class="active">@Html.ActionLink("About", "About")</li>
+            <li>@Html.ActionLink("Contact", "Contact")</li>
+            <li class="login-btn">@Html.ActionLink("Sign In", "Sign_in")</li>
+            <li class="register-btn">@Html.ActionLink("Sign Up", "Sign_up")</li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <div class="hero">
+            <h1>About Us</h1>
+            <p>Providing cutting-edge IT solutions since 2020.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>
+                    At TechVision, we believe that technology should empower people, not
+                    frustrate them. What started as a small consulting firm has grown
+                    into a full-service IT provider helping hundreds of businesses
+                    navigate the digital landscape.
+                </p>
+                <p>
+                    Our team consists of certified engineers, creative developers, and
+                    strategic thinkers dedicated to providing proactive support and
+                    innovative infrastructure.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                     alt="Our Team" />
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="card">
+                    <h4>Innovation</h4>
+                    <p>We stay ahead of the curve so you don't have to.</p>
+                </div>
+                <div class="card">
+                    <h4>Integrity</h4>
+                    <p>Honest advice and transparent pricing, every time.</p>
+                </div>
+                <div class="card">
+                    <h4>Reliability</h4>
+                    <p>We are there when you need us 24/7/365.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TechVision IT Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+

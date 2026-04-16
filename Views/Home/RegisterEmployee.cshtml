@@ -1,0 +1,169 @@
+﻿@model TechVision.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Employee Registration";
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #f8f9fc, #eef1f7);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-container {
+        max-width: 650px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 600;
+        color: #4e73df;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 11px 12px;
+        border-radius: 8px;
+        border: 1px solid #d1d3e2;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+    }
+
+        input:focus, select:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 5px rgba(78,115,223,0.2);
+            outline: none;
+        }
+
+    .text-danger {
+        font-size: 13px;
+        margin-top: 3px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: #4e73df;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .btn-submit:hover {
+            background: #2e59d9;
+            transform: scale(1.02);
+        }
+
+    .success-box {
+        background: #d4edda;
+        color: #155724;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="form-container">
+
+    <h2 class="form-title">Employee Registration</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="success-box">
+            @TempData["Success"]
+        </div>
+    }
+
+    @using (Html.BeginForm("RegisterEmployee", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Full Name</label>
+            @Html.TextBoxFor(x => x.FullName, new { placeholder = "Enter full name" })
+            @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            @Html.TextBoxFor(x => x.Address, new { placeholder = "Enter address" })
+            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Company Name</label>
+            @Html.TextBoxFor(x => x.CompanyName, new { placeholder = "Enter company name" })
+            @Html.ValidationMessageFor(x => x.CompanyName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            @Html.TextBoxFor(x => x.Salary, new { type = "number", min = "0", step = "0.01", placeholder = "Enter salary" })
+            @Html.ValidationMessageFor(x => x.Salary, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Marital Status</label>
+            @Html.DropDownListFor(x => x.MaritalStatus,
+                                    new List<SelectListItem> {
+                    new SelectListItem { Text="Single", Value="Single"},
+                    new SelectListItem { Text="Married", Value="Married"}
+                                                    },
+                                    "Select Status")
+            @Html.ValidationMessageFor(x => x.MaritalStatus, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            @Html.TextBoxFor(x => x.Email, new { type = "email", placeholder = "Enter email" })
+            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            @Html.DropDownListFor(x => x.Gender,
+                                    new List<SelectListItem> {
+                    new SelectListItem { Text="Male", Value="Male"},
+                    new SelectListItem { Text="Female", Value="Female"},
+                    new SelectListItem { Text="Other", Value="Other"}
+                                                    },
+                                    "Select Gender")
+            @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            @Html.TextBoxFor(x => x.Mobile, new { placeholder = "Enter mobile number" })
+            @Html.ValidationMessageFor(x => x.Mobile, "", new { @class = "text-danger" })
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn-submit">Register Employee</button>
+    }
+
+</div>

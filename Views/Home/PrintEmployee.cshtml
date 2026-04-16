@@ -1,0 +1,134 @@
+﻿@model TechVision.Models.EmployeeViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Card</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI';
+            background: #f4f6f9;
+        }
+
+        .card {
+            width: 420px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4e73df;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+            .header h2 {
+                margin: 0;
+            }
+
+        .body {
+            padding: 20px;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .value {
+            float: right;
+            color: #555;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .print-btn {
+            background: #1cc88a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @@media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="header">
+            <h2>Employee Card</h2>
+            <p>@Model.CompanyName</p>
+        </div>
+
+        <div class="body">
+            <div class="row">
+                <span class="label">Name:</span>
+                <span class="value">@Model.FullName</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Email:</span>
+                <span class="value">@Model.Email</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Mobile:</span>
+                <span class="value">@Model.Mobile</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Address:</span>
+                <span class="value">@Model.Address</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Salary:</span>
+                <span class="value">₹ @Model.Salary</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Gender:</span>
+                <span class="value">@Model.Gender</span>
+            </div>
+
+            <div class="row">
+                <span class="label">Marital Status:</span>
+                <span class="value">@Model.MaritalStatus</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button class="print-btn" onclick="window.print()">Print</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

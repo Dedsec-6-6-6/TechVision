@@ -1,0 +1,319 @@
+﻿
+@{
+    ViewBag.Title = "Service";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services | TechVision IT Solutions</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #20c997;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --accent: #e9ecef;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            nav .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--secondary);
+                text-decoration: none;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                margin: 0;
+            }
+
+                nav ul li {
+                    margin-left: 20px;
+                }
+
+                    nav ul li a {
+                        color: white;
+                        text-decoration: none;
+                        font-weight: 500;
+                    }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80");
+            background-size: cover;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+        /* Detailed Services Section */
+        .services-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        .service-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+            .service-row:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+
+        .service-text {
+            flex: 1;
+        }
+
+            .service-text h2 {
+                color: var(--primary);
+                font-size: 2rem;
+            }
+
+            .service-text ul {
+                padding-left: 20px;
+            }
+
+            .service-text li {
+                margin-bottom: 10px;
+            }
+
+        .service-image {
+            flex: 1;
+            background: var(--accent);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #aaa;
+            overflow: hidden;
+        }
+
+            .service-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .service-image:hover {
+                box-shadow: 0 8px 12px rgb(0, 0, 0);
+                transform: translateY(-5px);
+                transition: all 0.3s ease;
+            }
+
+        /* CTA Section */
+        .cta-box {
+            background: var(--dark);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 50px 0;
+            box-shadow: #333 0px 4px 15px;
+        }
+
+            .cta-box h2 {
+                margin-top: 0;
+            }
+
+        .btn-white {
+            background: white;
+            color: var(--dark);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+            .btn-white:hover {
+                background: #e9ecef;
+                box-shadow: 0px 1px 15px rgb(255, 255, 255);
+            }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 5%;
+            margin-top: 50px;
+        }
+
+            footer p {
+                margin: 5px 0;
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+
+        .service-text ul {
+            list-style-position: inside;
+            padding: 0;
+        }
+
+
+        .active {
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 2px;
+        }
+
+        .login-btn {
+            background: var(--primary);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+            .login-btn:hover {
+                background: #004494;
+            }
+
+        .register-btn {
+            background: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+            .register-btn:hover {
+                background: #17a589;
+            }
+
+        .pages li a:hover {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TechVision</div>
+        <ul class="pages">
+            <li>@Html.ActionLink("Home", "Index")</li>
+            <li class="active">@Html.ActionLink("Service", "Service")</li>
+            <li>@Html.ActionLink("About", "About")</li>
+            <li>@Html.ActionLink("Contact", "Contact")</li>
+            <li class="login-btn">@Html.ActionLink("Sign In", "Sign_in")</li>
+            <li class="register-btn">@Html.ActionLink("Sign Up", "Sign_up")</li>
+        </ul>
+    </nav>
+
+    <header class="services-header">
+        <div class="hero">
+            <h1>Solutions Tailored to Your Business</h1>
+            <p>Comprehensive IT support that lets you focus on growth.</p>
+        </div>
+    </header>
+
+    <main class="services-detail">
+        <div class="service-row">
+            <div class="service-text">
+                <h2>Managed IT Services</h2>
+                <p>
+                    We act as your in-house IT department, providing proactive
+                    maintenance and support for all your systems.
+                </p>
+                <ul>
+                    <li>24/7 Desktop & Server Monitoring</li>
+                    <li>Patch Management & Updates</li>
+                    <li>On-site & Remote Technical Support</li>
+                    <li>IT Asset Management</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80"
+                     alt="Managed IT" />
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-text">
+                <h2>Cybersecurity Solutions</h2>
+                <p>
+                    In an era of rising digital threats, we provide multi-layered
+                    defense strategies to keep your business safe.
+                </p>
+                <ul>
+                    <li>Advanced Firewall & Intrusion Detection</li>
+                    <li>Endpoint Protection (Antivirus/EDR)</li>
+                    <li>Employee Security Awareness Training</li>
+                    <li>Vulnerability Assessments</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80"
+                     alt="Cybersecurity" />
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-text">
+                <h2>Cloud Migration & Hosting</h2>
+                <p>
+                    Scale your business with the power of the cloud. We handle the
+                    migration, so you don't experience downtime.
+                </p>
+                <ul>
+                    <li>Microsoft 365 & Google Workspace Setup</li>
+                    <li>Cloud Backup & Disaster Recovery</li>
+                    <li>Hybrid Cloud Infrastructure</li>
+                    <li>AWS & Azure Management</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
+                     alt="Cloud Solutions" />
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Need a custom solution?</h2>
+            <p>
+                Our engineers are ready to build a strategy that fits your unique
+                needs.
+            </p>
+            <a href="@Url.Action("Contact", "Home")" class="btn-white">Get in Touch</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TechVision IT Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
